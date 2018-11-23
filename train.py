@@ -41,8 +41,9 @@ def update_results(epoch, predictions, targets, loss, weights, all_attributes, l
     current_batch_size = loss.size()[0]
     for i in range(current_batch_size):
         for j, k in enumerate(all_attributes):
-            loss_data_for_df[k].append(masked_loss[i, j])
-        loss_data_for_df["total_loss"].append(total_loss_per_sample[i])
+#            loss_data_for_df[k].append(masked_loss[i, j])
+            loss_data_for_df[k].append(masked_loss[i, j].cpu().numpy().tolist() if isinstance(masked_loss[i, j], torch.Tensor) else masked_loss[i, j])
+        loss_data_for_df["total_loss"].append(total_loss_per_sample[i].cpu().numpy().tolist() if isinstance(total_loss_per_sample[i], torch.Tensor) else total_loss_per_sample[i])
         loss_data_for_df["epoch"].append(epoch)
 
     for j, k in enumerate(all_attributes):

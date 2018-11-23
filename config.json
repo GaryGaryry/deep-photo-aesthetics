@@ -15,7 +15,7 @@
         "score": 1.0,
         "Repetition": 0.0
     },
-    "save_path":"checkpoint/001",
+    "save_path":"checkpoint/002",
     "train_path": "data/train.csv",
     "val_path": "data/val.csv",
     "img_folder_path": "images/",
